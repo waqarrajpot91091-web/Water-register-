@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<title>واٹر سیل مینیجر</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; direction: rtl; }
+  input, select { padding: 5px; margin: 5px 0; width: 200px; }
+  button { padding: 5px 10px; margin: 10px 0; }
+  h2, h3 { margin-top: 20px; }
+  ul { list-style-type: none; padding: 0; }
+  li { margin-bottom: 5px; }
+</style>
+</head>
+
+<body>
+
+<h2>واٹر سیل مینیجر</h2>
+
+<h3>نیا سیل ریکارڈ شامل کریں</h3>
+
+<input type="text" id="customer" placeholder="صارف کا نام">
+<select id="time">
+  <option value="صبح 9 بجے">صبح 9 بجے</option>
+  <option value="دوپہر 12 بجے">دوپہر 12 بجے</option>
+  <option value="شام 3 بجے">شام 3 بجے</option>
+  <option value="شام 6 بجے">شام 6 بجے</option>
+</select>
+
+<button onclick="addSale()">ریکارڈ شامل کریں</button>
+
+<h3>سیل ریکارڈ</h3>
+<ul id="list"></ul>
+
+<script>
+let records = [];
+
+function addSale(){
+  let customer = document.getElementById("customer").value;
+  let time = document.getElementById("time").value;
+
+  if(customer){
+    records.push(customer + " - " + time);
+
+    document.getElementById("list").innerHTML =
+      records.map(r => "<li>"+r+"</li>").join("");
+
+    document.getElementById("customer").value = "";
+  }
+}
+</script>
+
+</body>
+</html>
